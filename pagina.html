@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ClickCase | Accesorios para celular (demo escolar)</title>
+<style>
+:root{--ink:#1d1d1f;--mut:#6e6e73;--bg:#fff;--g:#f5f5f7;--line:#d2d2d7;--lime:#b6f03c;--blue:#0071e3}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.47;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.top{background:var(--g);color:var(--mut);font-size:12px;text-align:center;padding:9px 12px}.top b{color:var(--ink);font-weight:600}
+header{position:sticky;top:0;z-index:30;background:#ffffffcc;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid #0000001a}
+.w{max-width:1100px;margin:auto;padding:0 20px}
+.hw{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:10px 20px;max-width:1100px;margin:auto}
+.logo{font-weight:600;font-size:21px;letter-spacing:-.5px;background:none;border:0;padding:0;margin-right:8px}
+.logo span{color:var(--mut);font-weight:300}
+.sr{flex:1;min-width:150px;padding:9px 16px;border:0;border-radius:99px;background:var(--g);font-size:15px}
+.ib{position:relative;background:none;border:0;border-radius:99px;padding:8px 12px;font-size:14px}.ib:hover{background:var(--g)}
+.cnt{position:absolute;top:-2px;right:-2px;background:var(--blue);color:#fff;border-radius:99px;font-size:11px;min-width:18px;height:18px;display:grid;place-items:center;font-weight:600}
+nav.cats{display:flex;gap:4px;overflow-x:auto;padding:0 20px 8px;max-width:1100px;margin:auto}
+nav.cats button,.chip{border:0;background:none;border-radius:99px;padding:6px 14px;white-space:nowrap;text-transform:capitalize;font-size:14px;color:var(--mut)}
+nav.cats button:hover{color:var(--ink)}
+.chip{background:var(--g);color:var(--ink)}.chip.on{background:var(--ink);color:#fff}
+.btn{background:var(--blue);color:#fff;border:0;border-radius:99px;padding:10px 20px;font-weight:500;font-size:15px}.btn:hover{filter:brightness(1.1)}
+.btn.l{background:var(--ink)}.btn.o{background:var(--g);color:var(--ink)}
+.btn:disabled{opacity:.35;cursor:not-allowed}
+.hero{max-width:900px;margin:0 auto;padding:72px 20px 24px;text-align:center;display:block;color:var(--ink);background:none}
+.hero h1{font-size:clamp(38px,7vw,72px);line-height:1.05;margin:0 0 14px;letter-spacing:-.03em;font-weight:700}
+.hero p{color:var(--mut);font-size:clamp(17px,2.4vw,22px);max-width:34ch;margin:0 auto 26px}
+.hero .btn{padding:13px 28px;font-size:17px}
+.col{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;font-size:36px;margin:48px auto 0;max-width:640px}
+.col div{background:var(--g);border-radius:22px;padding:18px 0}
+section{padding:56px 0;scroll-margin-top:90px}
+h2.t{font-size:clamp(28px,4vw,40px);letter-spacing:-.02em;margin:0 0 22px;font-weight:700}
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.cc{background:var(--g);border:0;border-radius:22px;padding:26px 8px;text-align:center;font-size:38px;text-transform:capitalize}
+.cc small{display:block;font-size:15px;font-weight:600;margin-top:4px}.cc:hover{background:#ebebef}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:20px}
+.bar select{padding:8px 12px;border-radius:99px;border:0;background:var(--g);margin-left:auto;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.card{background:var(--g);border-radius:24px;overflow:hidden;position:relative}
+.img{height:170px;display:grid;place-items:center;font-size:72px;cursor:pointer;background:var(--g)!important}
+.cb{padding:6px 20px 20px}.cb h3{margin:2px 0 4px;font-size:19px;font-weight:600}.cb p{margin:0 0 8px;color:var(--mut);font-size:14px}
+.cb small{color:var(--mut);text-transform:capitalize;font-size:13px}
+.pr{font-weight:600;font-size:17px}.pr s{font-size:13px;color:var(--mut);font-weight:400}
+.fv{position:absolute;top:12px;right:12px;background:#fff;border:0;border-radius:50%;width:34px;height:34px;font-size:17px}.fv.on{color:#e30000}
+.bd{position:absolute;top:14px;left:14px;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:600}
+.st{display:inline-block;font-size:12px;font-weight:500;color:#1d7f35;margin:2px 0 12px}.st.low{color:#b25e00}.st.out{color:#c00}
+.row{display:flex;gap:8px}.row .btn{flex:1;padding:9px 6px;font-size:14px}
+.empty{text-align:center;padding:40px 12px;color:var(--mut)}.empty big{font-size:54px;display:block}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.box{background:var(--g);border-radius:22px;padding:24px}.box h3{margin-top:0}
+details{border-bottom:1px solid var(--line);padding:14px 0}summary{font-weight:600;cursor:pointer;font-size:17px}details p{color:var(--mut)}
+.soc{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.th{border:0;border-radius:22px;height:180px;font-size:40px;color:#fff;font-weight:600;position:relative}
+.th span{position:absolute;bottom:12px;left:16px;font-size:14px;font-weight:500}
+footer{background:var(--g);color:var(--mut);margin-top:40px;padding:36px 0;font-size:13px}
+footer .w{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px}
+footer b{color:var(--ink);display:block;margin-bottom:6px}
+footer button{display:block;background:none;border:0;color:var(--mut);padding:3px 0;text-align:left;font-size:13px}footer button:hover{color:var(--ink);text-decoration:underline}
+#bd{position:fixed;inset:0;background:#00000040;z-index:40;display:none}#bd.on{display:block}
+#dr{position:fixed;top:0;right:0;bottom:0;width:min(430px,100%);background:#fff;z-index:50;transform:translateX(100%);transition:transform .3s;display:flex;flex-direction:column;box-shadow:-10px 0 40px #0002}
+#dr.open{transform:none}
+#dr header{position:static;display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:#fff}
+#dr h2{margin:0;font-size:22px}#db{flex:1;overflow:auto;padding:8px 20px 20px}
+.it{display:flex;gap:12px;align-items:center;border-bottom:1px solid var(--g);padding:12px 0}
+.it .im{width:58px;height:58px;border-radius:14px;display:grid;place-items:center;font-size:28px;flex:none;background:var(--g)!important}
+.it div.i{flex:1;font-size:14px}.qb{display:inline-flex;align-items:center;gap:8px;margin-top:4px}
+.qb button{width:26px;height:26px;border-radius:50%;border:0;background:var(--g)}
+.lk{background:none;border:0;color:var(--blue);padding:0;font-size:14px}
+.tt{display:flex;justify-content:space-between;padding:3px 0}.tt.g{font-weight:600;font-size:19px;border-top:1px solid var(--line);margin-top:6px;padding-top:10px}
+.ov{position:fixed;inset:0;background:#00000050;backdrop-filter:blur(6px);z-index:60;display:none;align-items:center;justify-content:center;padding:12px}.ov.on{display:flex}
+.md{background:#fff;border-radius:24px;width:min(680px,100%);max-height:92vh;overflow:auto;padding:28px;position:relative}
+.md h2{margin-top:0;letter-spacing:-.02em}
+.x{position:absolute;top:14px;right:14px;border:0;background:var(--g);border-radius:50%;width:32px;height:32px;font-size:18px}
+label{display:block;font-size:13px;font-weight:500;color:var(--mut);margin-bottom:12px}
+label input,label select,label textarea{display:block;width:100%;padding:11px 14px;border:1px solid var(--line);border-radius:12px;margin-top:4px;color:var(--ink);background:#fff}
+label input:focus,label select:focus,label textarea:focus{outline:2px solid var(--blue);border-color:transparent}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+.er{color:#d70015;font-weight:500;min-height:20px;margin:4px 0;font-size:14px}
+.note{background:var(--g);border-radius:12px;padding:10px 14px;font-size:13px;color:var(--mut)}
+.steps{display:flex;gap:6px;margin:0 0 16px;padding-right:40px}.steps span{flex:1;text-align:center;padding:6px;border-radius:99px;background:var(--g);font-size:13px;color:var(--mut)}.steps span.on{background:var(--ink);color:#fff}
+.pay{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.pay label{flex:1;min-width:120px;border:1.5px solid var(--line);border-radius:14px;padding:14px;text-align:center;margin:0;cursor:pointer;color:var(--ink)}
+.pay input{display:none}.pay label:has(input:checked){border-color:var(--blue);background:#f0f7ff}
+.rv{border-top:1px solid var(--g);padding:10px 0;font-size:14px}.star{color:#e5a000}
+.vid{height:230px;border-radius:18px;background:#1d1d1f;display:grid;place-items:center;font-size:70px;overflow:hidden;position:relative;margin-bottom:12px}
+.vid i{position:absolute;left:0;bottom:0;height:4px;background:var(--lime);width:0;animation:pg 12s linear infinite paused}
+.vid.p i{animation-play-state:running}.vid.p em{animation:bob 1s infinite alternate}.vid em{font-style:normal}
+@keyframes pg{to{width:100%}}@keyframes bob{to{transform:scale(1.2) rotate(8deg)}}
+#ts{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:90;display:grid;gap:8px}
+.t{background:#1d1d1fee;color:#fff;padding:11px 20px;border-radius:99px;font-size:14px;backdrop-filter:blur(10px)}.t.bad{background:#d70015}
+@media(max-width:700px){.f2{grid-template-columns:1fr}.col{grid-template-columns:repeat(3,1fr)}.hero{padding-top:44px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+@media print{body>*:not(#ov){display:none!important}#ov{position:static;background:none;display:block!important}.md{max-height:none;overflow:visible}.x,.np{display:none!important}}
+.ph{font-size:24px;font-weight:600;letter-spacing:-.02em;color:#a1a1a6;text-transform:capitalize}.vid{color:#fff;font-size:28px;font-weight:600}.fv svg{display:block;margin:auto}.th{font-size:18px}</style>
+</head>
+<body>
+<div class="top"> Envío gratis desde <b>$699 MXN</b> · Promos de temporada · Atención: <b>800-000-0000</b> (demo) · <b>Tienda ficticia con fines escolares</b></div>
+<header>
+  <div class="hw">
+    <button class="logo" data-a="go" data-v="inicio" aria-label="ClickCase, inicio">Click<span>Case</span></button>
+    <input id="q" class="sr" type="search" placeholder="Buscar productos…" aria-label="Buscar productos">
+    <button class="ib" data-a="acct"> <span id="un">Cuenta</span></button>
+    <button class="ib" data-a="drawer" data-v="fav" aria-label="Favoritos">Favoritos<span class="cnt" id="fc">0</span></button>
+    <button class="ib" data-a="drawer" data-v="cart" aria-label="Carrito"> Carrito<span class="cnt" id="cc2">0</span></button>
+  </div>
+  <nav class="cats" id="nav" aria-label="Categorías"></nav>
+</header>
+
+<main id="inicio">
+<div class="hero">
+  <div>
+    <h1>Tu celular, bien equipado.</h1>
+    <p>Fundas, cargadores, cables, audífonos y soportes. Envío gratis desde $699 MXN.</p>
+    <button class="btn l" data-a="go" data-v="catalogo">Comprar ahora</button>
+  </div>
+</div>
+
+<div class="w">
+<section><h2 class="t">Categorías</h2><div class="cg" id="catcards"></div></section>
+
+<section id="catalogo"><h2 class="t">Catálogo</h2>
+  <div class="bar"><span id="chips" style="display:contents"></span>
+    <select id="sort" aria-label="Ordenar por precio"><option value="">Ordenar: relevancia</option><option value="asc">Precio: menor a mayor</option><option value="desc">Precio: mayor a menor</option></select></div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section id="recomendados"><h2 class="t">Productos recomendados</h2><div class="grid" id="rec"></div></section>
+
+<section id="envios"><h2 class="t">Envíos y pagos</h2>
+  <div class="info">
+    <div class="box"><h3> Política de envío</h3><p>Pedidos menores a $699 MXN: envío fijo de <b>$49 MXN</b>.<br>Pedidos de $699 MXN o más: <b>envío gratis</b>.</p><p>Ejemplo: $500 + $49 = $549. Ejemplo: $750 + $0 = $750.</p></div>
+    <div class="box"><h3> Métodos de pago (simulados)</h3><p>Tarjeta de crédito, tarjeta de débito y PayPal. En esta demostración <b>no se procesa dinero</b> ni se piden números de tarjeta o contraseñas.</p></div>
+  </div>
+</section>
+
+<section id="faq"><h2 class="t">Preguntas frecuentes</h2>
+  <details><summary>¿Cuánto tarda y cuesta el envío?</summary><p>Demo: de 3 a 5 días hábiles. $49 MXN, gratis desde $699 MXN.</p></details>
+  <details><summary>¿Qué formas de pago aceptan?</summary><p>Se simulan tarjeta de crédito, débito y PayPal. No se cobra nada.</p></details>
+  <details><summary>¿Cómo hago una devolución?</summary><p>Usa el botón “Solicitar devolución” de la sección Devoluciones. Es un formulario simulado.</p></details>
+  <details><summary>¿Los productos tienen garantía?</summary><p>Garantía de demostración de 90 días contra defectos de fabricación.</p></details>
+  <details><summary>¿Cómo doy seguimiento a mi pedido?</summary><p>Al confirmar recibes un número de pedido (CC-XXXXXXXX). El seguimiento es solo ilustrativo.</p></details>
+  <details><summary>¿Cómo solicito factura?</summary><p>Después de confirmar tu compra aparece el botón “Solicitar factura”. Es un comprobante de demostración, sin validez fiscal.</p></details>
+</section>
+
+<section id="devoluciones"><h2 class="t">Política de devoluciones (demo)</h2>
+  <div class="info">
+    <div class="box"><h3>Plazo y condiciones</h3><p>15 días naturales desde la entrega. El producto debe estar sin uso y en su empaque.</p></div>
+    <div class="box"><h3>Proceso</h3><p>1) Solicita la devolución. 2) Recibe una guía ficticia. 3) Reembolso simulado en 5 días hábiles.</p></div>
+    <div class="box"><h3>Excepciones</h3><p>Audífonos usados, protectores de pantalla instalados y productos dañados por mal uso.</p><button class="btn l" data-a="ret">Solicitar devolución</button></div>
+  </div>
+</section>
+
+<section id="redes"><h2 class="t">Redes sociales</h2>
+  <div class="soc">
+    <button class="th" style="background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af)" data-a="vid" data-v="Instagram||Funda antigolpes en acción">Ver video<span>Instagram · demo</span></button>
+    <button class="th" style="background:#1877f2" data-a="vid" data-v="Facebook||Prueba de audífonos inalámbricos">Ver video<span>Facebook · demo</span></button>
+    <button class="th" style="background:#111;box-shadow:inset 0 0 0 3px #25f4ee,inset 0 0 0 6px #fe2c55" data-a="vid" data-v="TikTok||Power bank: carga rápida">Ver video<span>TikTok · demo</span></button>
+  </div>
+  <p class="note">Contenido de demostración: no son perfiles ni videos reales de ninguna marca.</p>
+</section>
+</div>
+</main>
+
+<footer><div class="w">
+  <div><b>Click<span style="color:var(--lime)">Case</span></b>Tienda ficticia de accesorios para celular, hecha para un proyecto escolar. No se vende ni se cobra nada.</div>
+  <div><b>Ayuda</b><button data-a="go" data-v="faq">Preguntas frecuentes</button><button data-a="go" data-v="envios">Envíos</button><button data-a="go" data-v="devoluciones">Devoluciones</button><button data-a="ret">Solicitar devolución</button></div>
+  <div><b>Pagos (simulados)</b> Crédito ·  Débito · PayPal</div>
+  <div><b>Redes</b><button data-a="go" data-v="redes">Instagram</button><button data-a="go" data-v="redes">Facebook</button><button data-a="go" data-v="redes">TikTok</button></div>
+</div></footer>
+
+<div id="bd" data-a="closeD"></div>
+<aside id="dr" aria-label="Panel lateral"><header><h2 id="dt"></h2><button class="ib" data-a="closeD" aria-label="Cerrar">✕</button></header><div id="db"></div></aside>
+<div class="ov" id="ov"><div class="md" id="md" role="dialog" aria-modal="true"></div></div>
+<div id="ts" aria-live="polite"></div>
+
+<script>
+/* ===== UTILIDADES ===== */
+const $=s=>document.querySelector(s);
+const money=n=>'$'+n.toLocaleString('es-MX')+' MXN';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const LS={g:(k,d)=>{try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}},s:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const fd=f=>Object.fromEntries(new FormData(f));
+function T(m,bad){const d=document.createElement('div');d.className='t'+(bad?' bad':'');d.textContent=m;$('#ts').append(d);setTimeout(()=>d.remove(),2800)}
+
+/* ===== DATOS (productos ficticios) ===== */
+const CATS=['fundas','cargadores','cables','audífonos','soportes'];
+const CE={fundas:'',cargadores:'',cables:'','audífonos':'',soportes:''};
+const P=[
+{id:1,n:'Funda transparente',c:'fundas',p:99,s:12,e:'',d:'Ultradelgada, no amarillea.'},
+{id:2,n:'Funda antigolpes',c:'fundas',p:179,o:219,s:5,e:'',b:'-18%',d:'Esquinas reforzadas contra caídas.'},
+{id:3,n:'Cable USB-C 1 m',c:'cables',p:129,s:20,e:'',d:'Nylon trenzado, carga y datos.'},
+{id:4,n:'Cargador rápido 20W',c:'cargadores',p:249,s:3,e:'',b:'Top',d:'Carga rápida compacta.'},
+{id:5,n:'Audífonos inalámbricos',c:'audífonos',p:399,o:499,s:8,e:'',b:'-20%',d:'Bluetooth 5.3, 20 h de batería.'},
+{id:6,n:'Soporte de escritorio',c:'soportes',p:149,s:0,e:'',d:'Aluminio, ángulo ajustable.'},
+{id:7,n:'Protector de pantalla',c:'fundas',p:79,s:30,e:'',d:'Vidrio templado 9H.'},
+{id:8,n:'Power bank 10,000 mAh',c:'cargadores',p:449,s:6,e:'',b:'Nuevo',d:'Dos puertos, carga rápida.'},
+{id:9,n:'Adaptador USB-C',c:'cables',p:199,s:2,e:'',d:'USB-C a USB-A, datos y carga.'},
+{id:10,n:'Soporte para automóvil',c:'soportes',p:169,s:15,e:'',d:'Ventosa firme, giro 360°.'},
+{id:11,n:'Cable magnético',c:'cables',p:149,s:9,e:'',d:'Conector magnético intercambiable.'}
+];
+const gr=p=>`hsl(${p.id*47%360} 60% 90%)`;
+const find=i=>P.find(p=>p.id==i);
+const SEED=[{n:'Cliente demo A',r:5,t:'Muy buena calidad para el precio.'},{n:'Cliente demo B',r:4,t:'Llegó rápido y funciona bien.'}];
+
+/* ===== ESTADO (guardado en LocalStorage) ===== */
+let cart=LS.g('cc_cart',{}),favs=LS.g('cc_fav',[]),revs=LS.g('cc_rev',{});
+let stock=LS.g('cc_stock',null)||Object.fromEntries(P.map(p=>[p.id,p.s]));
+let filt={cat:'todos',q:'',sort:''},dOpen=null,co={on:false,step:1,d:{},pay:'credit'},amode='login';
+const sv=()=>{LS.s('cc_cart',cart);LS.s('cc_fav',favs);LS.s('cc_stock',stock)};
+const revOf=id=>revs[id]||SEED;
+const avg=id=>{const r=revOf(id);return(r.reduce((a,b)=>a+b.r,0)/r.length).toFixed(1)};
+const stars=n=>'★'.repeat(n)+'☆'.repeat(5-n);
+
+/* ===== STOCK ===== */
+function lab(s){return s<=0?['Agotado','out']:s<=3?['Últimas '+s+' piezas','low']:s<=8?['Pocas unidades','low']:['Disponible','']}
+
+/* ===== RENDER: catálogo ===== */
+function card(p){const s=stock[p.id],f=favs.includes(p.id),[l,c]=lab(s);
+return `<article class="card"><button class="fv ${f?'on':''}" data-a="fav" data-v="${p.id}" aria-label="Favorito">${HEART(f)}</button>${p.b?`<span class="bd">${p.b}</span>`:''}
+<div class="img" style="background:${gr(p)}" data-a="det" data-v="${p.id}"><span class="ph">${p.c}</span></div>
+<div class="cb"><small>${p.c}</small><h3>${p.n}</h3><p>${p.d}</p>
+<div class="pr">${money(p.p)} ${p.o?`<s>${money(p.o)}</s>`:''}</div><span class="st ${c}">${l}</span>
+<div class="row"><button class="btn l" data-a="add" data-v="${p.id}" ${s?'':'disabled'}>Agregar</button><button class="btn o" data-a="det" data-v="${p.id}">Detalles</button></div></div></article>`}
+function catalog(){
+ let l=P.filter(p=>(filt.cat=='todos'||p.c==filt.cat)&&p.n.toLowerCase().includes(filt.q.toLowerCase()));
+ if(filt.sort)l.sort((a,b)=>filt.sort=='asc'?a.p-b.p:b.p-a.p);
+ $('#grid').innerHTML=l.length?l.map(card).join(''):'<div class="empty"><big></big>Sin resultados. Prueba otra búsqueda o categoría.</div>';
+ $('#chips').innerHTML=['todos',...CATS].map(c=>`<button class="chip ${filt.cat==c?'on':''}" data-a="cat" data-v="${c}">${c}</button>`).join('');
+}
+function rec(){$('#rec').innerHTML=P.filter(p=>p.b||p.id==8).slice(0,4).map(card).join('')}
+function counts(){$('#cc2').textContent=Object.values(cart).reduce((a,b)=>a+b,0);$('#fc').textContent=favs.length}
+function R(){catalog();rec();counts();if(dOpen)drawer()}
+
+/* ===== CARRITO ===== */
+function totals(){const sub=Object.entries(cart).reduce((a,[i,q])=>a+find(i).p*q,0);const sh=(sub==0||sub>=699)?0:49;return{sub,sh,t:sub+sh}}
+function add(i){const n=(cart[i]||0)+1;if(stock[i]<=0)return T('Producto agotado',1);if(n>stock[i])return T('Solo hay '+stock[i]+' piezas disponibles',1);cart[i]=n;sv();R();T(' '+find(i).n+' agregado')}
+function qty(v){const[i,d]=v.split(':').map(Number),n=(cart[i]||0)+d;if(n<1)return rm(i);if(n>stock[i])return T('Solo hay '+stock[i]+' piezas disponibles',1);cart[i]=n;sv();R();if(co.on&&co.step==1)ck()}
+function rm(i){delete cart[i];sv();R();if(co.on){Object.keys(cart).length?ck():closeM()}}
+function totH(){const t=totals();return `<div class="tt"><span>Subtotal</span><span>${money(t.sub)}</span></div><div class="tt"><span>Envío</span><span>${t.sh?money(t.sh):'Gratis'}</span></div><div class="tt g"><span>Total</span><span>${money(t.t)}</span></div>
+<p style="font-size:13px;color:var(--mut)">${t.sub>=699?' Tienes envío gratis.':'Te faltan '+money(699-t.sub)+' para envío gratis ($49 si no llegas).'}</p>`}
+function lineH(i,ed){const p=find(i),q=cart[i];return `<div class="it"><div class="im" style="background:${gr(p)}"><span class="ph" style="font-size:22px">${p.n[0]}</span></div><div class="i"><b>${p.n}</b><br>${money(p.p)} · subtotal ${money(p.p*q)}<br>
+${ed?`<span class="qb"><button data-a="qty" data-v="${i}:-1" aria-label="Menos">−</button>${q}<button data-a="qty" data-v="${i}:1" aria-label="Más">+</button></span> <button class="lk" data-a="rm" data-v="${i}">Eliminar</button>`:'Cant.: '+q}</div></div>`}
+function cartH(){const k=Object.keys(cart);if(!k.length)return '<div class="empty"><big></big><b>Tu carrito está vacío</b><p>Agrega accesorios para empezar.</p><button class="btn l" data-a="closeGo">Ver catálogo</button></div>';
+return k.map(i=>lineH(i,1)).join('')+totH()+'<button class="btn l" style="width:100%" data-a="ck">Ir a pagar</button>'}
+function favH(){if(!favs.length)return '<div class="empty"><b>Aún no tienes favoritos</b><p>Toca el corazón en un producto.</p></div>';
+return favs.map(i=>{const p=find(i);return `<div class="it"><div class="im" style="background:${gr(p)}"><span class="ph" style="font-size:22px">${p.n[0]}</span></div><div class="i"><b>${p.n}</b><br>${money(p.p)}<br><button class="btn l" style="padding:4px 10px" data-a="add" data-v="${i}" ${stock[i]?'':'disabled'}>Al carrito</button> <button class="lk" data-a="fav" data-v="${i}">Quitar</button></div></div>`}).join('')}
+function drawer(m){if(m)dOpen=m;$('#dr').classList.add('open');$('#bd').classList.add('on');$('#dt').textContent=dOpen=='cart'?'Tu carrito':'Favoritos';$('#db').innerHTML=dOpen=='cart'?cartH():favH()}
+function closeD(){dOpen=null;$('#dr').classList.remove('open');$('#bd').classList.remove('on')}
+
+const HEART=f=>`<svg width="18" height="18" viewBox="0 0 24 24" fill="${f?'currentColor':'none'}" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-4.6-9.3-9A5.3 5.3 0 0112 6a5.3 5.3 0 019.3 6c-2.3 4.4-9.3 9-9.3 9z"/></svg>`;
+/* ===== FAVORITOS ===== */
+function fav(i){i=Number(i);const k=favs.indexOf(i);k<0?(favs.push(i),T(' Guardado en favoritos')):(favs.splice(k,1),T('Quitado de favoritos'));sv();R()}
+
+/* ===== MODALES ===== */
+function M(h){$('#md').innerHTML='<button class="x" data-a="close" aria-label="Cerrar">×</button>'+h;$('#ov').classList.add('on')}
+function closeM(){$('#ov').classList.remove('on');co.on=false}
+function det(i){const p=find(i),s=stock[i],[l,c]=lab(s),r=revOf(i);
+M(`<div class="img" style="background:${gr(p)};border-radius:14px;height:160px;cursor:default"><span class="ph">${p.c}</span></div><h2 style="margin-top:12px">${p.n}</h2>
+<p>${p.d} Producto ficticio de demostración.</p><div class="pr">${money(p.p)} ${p.o?`<s>${money(p.o)}</s>`:''}</div>
+<span class="st ${c}">${l}</span> <span class="star">${stars(Math.round(avg(i)))}</span> ${avg(i)} (${r.length})
+<div class="row" style="margin:10px 0"><button class="btn l" data-a="add" data-v="${i}" ${s?'':'disabled'}>Agregar al carrito</button><button class="btn o" data-a="fav" data-v="${i}" data-m="${i}">Favorito</button></div>
+<p><b>También te puede gustar:</b> ${P.filter(x=>x.c==p.c&&x.id!=i||x.b&&x.id!=i).slice(0,3).map(x=>`<button class="chip" data-a="det" data-v="${x.id}">${x.n}</button>`).join(' ')}</p>
+<h3>Reseñas</h3><p class="note">Reseñas ficticias de demostración, no son opiniones reales verificadas.</p>
+${r.map(x=>`<div class="rv"><span class="star">${stars(x.r)}</span> <b>${esc(x.n)}</b><br>${esc(x.t)}</div>`).join('')}
+<h3>Escribe una reseña</h3><form data-f="rev" novalidate><input type="hidden" name="id" value="${i}">
+<div class="f2"><label>Tu nombre<input name="n"></label><label>Calificación<select name="r"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></label></div>
+<label>Comentario<textarea name="t" rows="2"></textarea></label><p class="er"></p><button class="btn">Publicar reseña</button></form>`)}
+
+/* ===== CUENTA (simulación local, NO segura) ===== */
+function acct(){const u=LS.g('cc_user',null);
+if(u)return M(`<h2>Hola, ${esc(u.name)}</h2><p>Sesión simulada guardada en este navegador.</p><button class="btn" data-a="logout">Cerrar sesión</button>`);
+const reg=amode=='reg';
+M(`<h2>${reg?'Crear cuenta':'Iniciar sesión'}</h2><p class="note">Simulación escolar: los datos se guardan solo en este navegador y <b>no es autenticación segura</b> para producción. No necesitas cuenta para comprar.</p>
+<form data-f="acct" novalidate>${reg?'<label>Nombre<input name="name" autocomplete="name"></label>':''}<label>Correo electrónico<input name="email" type="email" autocomplete="email"></label>
+<label>Contraseña (mínimo 6)<input name="pw" type="password" autocomplete="off"></label><p class="er"></p>
+<button class="btn l">${reg?'Crear cuenta':'Entrar'}</button> <button type="button" class="lk" data-a="amode">${reg?'Ya tengo cuenta':'Crear una cuenta'}</button></form>`)}
+function setUser(){const u=LS.g('cc_user',null);$('#un').textContent=u?u.name.split(' ')[0]:'Cuenta'}
+
+/* ===== CHECKOUT (3 pasos) ===== */
+const FL=[['nombre','Nombre completo'],['correo','Correo electrónico'],['telefono','Teléfono (10 dígitos)'],['calle','Calle'],['numero','Número'],['colonia','Colonia'],['cp','Código postal (5 dígitos)'],['municipio','Alcaldía o municipio'],['estado','Estado']];
+function ck(){
+ if(!Object.keys(cart).length)return T('Tu carrito está vacío',1);
+ closeD();co.on=true;const s=co.step;
+ const hd=`<h2>Pagar</h2><div class="steps"><span class="${s==1?'on':''}">1 Revisar</span><span class="${s==2?'on':''}">2 Envío</span><span class="${s==3?'on':''}">3 Confirmar</span></div>`;
+ if(s==1)return M(hd+Object.keys(cart).map(i=>lineH(i,1)).join('')+totH()+'<p class="note">Compra simulada: no se realiza ningún cobro real.</p><button class="btn l" data-a="cks" data-v="2">Continuar</button>');
+ if(s==2)return M(hd+`<form data-f="ck2" novalidate><div class="f2">${FL.map(([k,l])=>`<label>${l}<input name="${k}" value="${esc(co.d[k]||'')}"></label>`).join('')}</div><p class="er"></p>
+ <button type="button" class="btn o" data-a="cks" data-v="1">Atrás</button> <button class="btn l">Continuar</button></form>`);
+ const d=co.d;
+ M(hd+`<h3>Método de pago (simulado)</h3><div class="pay">${[['credit',' Tarjeta de crédito'],['debit',' Tarjeta de débito'],['paypal',' PayPal']].map(([v,l])=>`<label><input type="radio" name="pay" value="${v}" data-a="setpay" data-v="${v}" ${co.pay==v?'checked':''}>${l}</label>`).join('')}</div>
+ <p class="note">Los pagos son simulados. No se piden ni guardan tarjetas, CVV ni credenciales. No se procesa dinero.</p>
+ <h3>Resumen</h3>${Object.keys(cart).map(i=>lineH(i,0)).join('')}<p><b>Envío a:</b> ${esc(d.nombre)}, ${esc(d.calle)} ${esc(d.numero)}, ${esc(d.colonia)}, CP ${esc(d.cp)}, ${esc(d.municipio)}, ${esc(d.estado)}</p>${totH()}
+ <button class="btn o" data-a="cks" data-v="2">Atrás</button> <button class="btn l" data-a="place">Confirmar pedido</button>`)}
+function place(){
+ for(const i in cart)if(cart[i]>stock[i])return T('Sin existencias suficientes de '+find(i).n,1);
+ const t=totals(),o={id:'CC-'+String(Date.now()).slice(-8),items:Object.entries(cart).map(([i,q])=>({n:find(i).n,p:find(i).p,q})),d:co.d,pay:co.pay,...t,date:new Date().toLocaleString('es-MX')};
+ for(const i in cart)stock[i]-=cart[i];
+ cart={};sv();LS.s('cc_last',o);R();co={on:false,step:1,d:co.d,pay:co.pay};T(' Pedido '+o.id+' confirmado');done(o)}
+const PN={credit:'Tarjeta de crédito',debit:'Tarjeta de débito',paypal:'PayPal'};
+function sumH(o){return `<p><b>Pedido:</b> ${o.id} · ${o.date}</p>${o.items.map(x=>`<div class="tt"><span>${x.q} × ${esc(x.n)}</span><span>${money(x.p*x.q)}</span></div>`).join('')}
+<p><b>Dirección:</b> ${esc(o.d.nombre)}, ${esc(o.d.calle)} ${esc(o.d.numero)}, ${esc(o.d.colonia)}, CP ${esc(o.d.cp)}, ${esc(o.d.municipio)}, ${esc(o.d.estado)}</p><p><b>Pago (simulado):</b> ${PN[o.pay]}</p>
+<div class="tt"><span>Subtotal</span><span>${money(o.sub)}</span></div><div class="tt"><span>Envío</span><span>${o.sh?money(o.sh):'Gratis'}</span></div><div class="tt g"><span>Total</span><span>${money(o.t)}</span></div>`}
+function done(o){M(`<h2> ¡Pedido confirmado!</h2><p class="note">Compra simulada: no se cobró nada.</p>${sumH(o)}<button class="btn l" data-a="inv">Solicitar factura</button> <button class="btn o" data-a="close">Seguir comprando</button>`)}
+
+/* ===== FACTURA DE DEMOSTRACIÓN ===== */
+function inv(){M(`<h2>Solicitar factura</h2><p class="note">Datos de demostración. No es una factura fiscal CFDI válida ni está timbrada por el SAT.</p>
+<form data-f="inv" novalidate><label>RFC (ej. XAXX010101000)<input name="rfc" maxlength="13"></label><label>Nombre o razón social<input name="rs"></label><label>Código postal fiscal<input name="cp"></label>
+<label>Uso de CFDI<select name="uso"><option>G01 Adquisición de mercancías</option><option>G03 Gastos en general</option><option>S01 Sin efectos fiscales</option></select></label><p class="er"></p><button class="btn l">Generar comprobante</button></form>`)}
+
+/* ===== ACCIONES (clics) ===== */
+const A={
+ fav:(v,t)=>{fav(v);if(t.dataset.m)det(v)},add:v=>{add(v);if($('#ov').classList.contains('on')&&!co.on)det(v)},det:v=>det(v),
+ cat:v=>{filt.cat=v;R();A.go('catalogo')},go:v=>{closeM();closeD();const el=document.getElementById(v);if(!el)return;const y=Math.max(0,el.getBoundingClientRect().top+window.pageYOffset-80);try{window.scrollTo({top:y,behavior:'smooth'})}catch(e){window.scrollTo(0,y)}setTimeout(()=>{if(Math.abs(window.pageYOffset-y)>200){(document.scrollingElement||document.documentElement).scrollTop=y}},700)},
+ closeGo:()=>A.go('catalogo'),drawer:v=>drawer(v),acct,close:closeM,closeD,qty,rm,ck:()=>{co.step=1;ck()},
+ cks:(v)=>{const f=$('#md form[data-f=ck2]');if(f)co.d=fd(f);co.step=Number(v);ck()},setpay:v=>{co.pay=v},place,inv,
+ amode:()=>{amode=amode=='login'?'reg':'login';acct()},
+ logout:()=>{LS.s('cc_user',null);setUser();closeM();T('Sesión cerrada')},
+ ret:()=>M(`<h2>Solicitar devolución</h2><p class="note">Formulario simulado: no se envía a ningún servidor.</p><form data-f="ret" novalidate><label>Número de pedido<input name="o" placeholder="CC-12345678"></label>
+ <label>Producto<select name="p">${P.map(p=>`<option>${p.n}</option>`).join('')}</select></label><label>Motivo<select name="m"><option>Llegó dañado</option><option>No es lo que esperaba</option><option>Producto equivocado</option></select></label>
+ <label>Detalles<textarea name="d" rows="3"></textarea></label><p class="er"></p><button type="button" class="btn o" data-a="close">Cancelar</button> <button class="btn l">Enviar solicitud</button></form>`),
+ vid:v=>{const[r,e,t]=v.split('|');M(`<h2>${r}: ${t}</h2><div class="vid" id="vd"><em>Demo</em><i></i></div><p class="note">Video de demostración simulado (animación). No es un perfil ni contenido real de ${r}.</p><button class="btn l" data-a="pp">Reproducir / pausar</button>`)},
+ pp:()=>$('#vd').classList.toggle('p')
+};
+document.addEventListener('click',e=>{if(e.target.id=='ov')return closeM();const t=e.target.closest('[data-a]');if(t&&A[t.dataset.a])A[t.dataset.a](t.dataset.v,t)});
+
+/* ===== FORMULARIOS (con validación) ===== */
+const em=v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v||'');
+const F={
+ acct(f){const d=fd(f),er=m=>{f.querySelector('.er').textContent=m},users=LS.g('cc_users',[]);
+  if(amode=='reg'&&(d.name||'').trim().length<2)return er('Escribe tu nombre (mínimo 2 letras).');
+  if(!em(d.email))return er('Escribe un correo válido, por ejemplo nombre@correo.com.');
+  if((d.pw||'').length<6)return er('La contraseña debe tener al menos 6 caracteres.');
+  const k=d.email.toLowerCase();
+  if(amode=='reg'){if(users.some(u=>u.email==k))return er('Ese correo ya está registrado. Inicia sesión.');users.push({name:d.name.trim(),email:k,pw:btoa(d.pw)});LS.s('cc_users',users);LS.s('cc_user',{name:d.name.trim(),email:k});}
+  else{const u=users.find(u=>u.email==k&&u.pw==btoa(d.pw));if(!u)return er('Correo o contraseña incorrectos.');LS.s('cc_user',{name:u.name,email:k});}
+  setUser();closeM();T(' Sesión iniciada (simulada)')},
+ ck2(f){const d=fd(f),er=m=>{f.querySelector('.er').textContent=m};co.d=d;
+  for(const[k,l]of FL)if(!(d[k]||'').trim())return er('Falta completar: '+l+'.');
+  if(!em(d.correo))return er('El correo no es válido.');
+  if(!/^\d{10}$/.test(d.telefono))return er('El teléfono debe tener 10 dígitos.');
+  if(!/^\d{5}$/.test(d.cp))return er('El código postal debe tener 5 dígitos.');
+  co.step=3;ck()},
+ rev(f){const d=fd(f),er=m=>{f.querySelector('.er').textContent=m};
+  if((d.n||'').trim().length<2)return er('Escribe tu nombre.');if((d.t||'').trim().length<5)return er('El comentario debe tener al menos 5 caracteres.');
+  revs[d.id]=[...revOf(d.id),{n:d.n.trim(),r:Number(d.r),t:d.t.trim()}];LS.s('cc_rev',revs);T(' Reseña publicada');det(d.id)},
+ inv(f){const d=fd(f),er=m=>{f.querySelector('.er').textContent=m},o=LS.g('cc_last',null);if(!o)return er('No hay pedido para facturar.');
+  if(!/^[A-ZÑ&]{3,4}\d{6}[A-Z0-9]{3}$/i.test((d.rfc||'').trim()))return er('RFC inválido. Formato: 3-4 letras, 6 números y 3 caracteres.');
+  if((d.rs||'').trim().length<3)return er('Escribe el nombre o razón social.');if(!/^\d{5}$/.test(d.cp))return er('El código postal fiscal debe tener 5 dígitos.');
+  M(`<h2>Comprobante de demostración</h2><p class="note">NO es una factura fiscal CFDI válida ni está timbrada por el SAT.</p><p><b>ClickCase (tienda ficticia)</b></p>
+  <p><b>RFC:</b> ${esc(d.rfc.toUpperCase())}<br><b>Razón social:</b> ${esc(d.rs)}<br><b>CP fiscal:</b> ${esc(d.cp)}<br><b>Uso CFDI:</b> ${esc(d.uso)}</p>${sumH(o)}
+  <button class="btn l np" onclick="window.print()">Imprimir</button> <button class="btn o np" data-a="close">Cerrar</button>`)},
+ ret(f){const d=fd(f),er=m=>{f.querySelector('.er').textContent=m};
+  if(!/^CC-\d{8}$/i.test((d.o||'').trim()))return er('El número de pedido tiene el formato CC-12345678.');if((d.d||'').trim().length<10)return er('Cuéntanos más detalles (mínimo 10 caracteres).');
+  closeM();T(' Solicitud simulada enviada')}
+};
+/* Los formularios se procesan con clic/Enter propios (no con el envío nativo), así funcionan también en vistas previas con formularios bloqueados */
+function runForm(f){if(f&&F[f.dataset.f]){try{F[f.dataset.f](f)}catch(x){T('Ocurrió un error, intenta de nuevo',1)}}}
+document.addEventListener('submit',e=>{e.preventDefault();runForm(e.target)});
+document.addEventListener('click',e=>{const b=e.target.closest('form[data-f] button');if(b&&b.type!='button'){e.preventDefault();runForm(b.form)}});
+document.addEventListener('keydown',e=>{if(e.key=='Enter'&&e.target.matches('form[data-f] input')){e.preventDefault();runForm(e.target.form)}});
+
+/* ===== BUSCADOR, ORDEN, TECLADO ===== */
+$('#q').addEventListener('input',e=>{filt.q=e.target.value;catalog()});
+$('#q').addEventListener('keydown',e=>{if(e.key=='Enter')A.go('catalogo')});
+$('#sort').addEventListener('change',e=>{filt.sort=e.target.value;catalog()});
+document.addEventListener('keydown',e=>{if(e.key=='Escape'){closeM();closeD()}});
+
+/* ===== INICIO ===== */
+$('#nav').innerHTML=CATS.map(c=>`<button data-a="cat" data-v="${c}">${c}</button>`).join('')+'<button data-a="go" data-v="envios">Envíos</button><button data-a="go" data-v="faq">Ayuda</button>';
+$('#catcards').innerHTML=CATS.map(c=>`<button class="cc" data-a="cat" data-v="${c}"><small>${c}</small></button>`).join('');
+setUser();R();
+</script>
+</body>
+</html>
